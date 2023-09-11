@@ -10,9 +10,11 @@ Requirements
 Create a responsive and visually appealing user interface for the application. Here's the link to the design you're expected to replicate: https://www.figma.com/file/tVfgoNfhYkQaUkh8LGqRab/MovieBox-(Community)?type=design&node-id=1220-324&mode=design&t=6998DWtjQrxz8mOf-0
 You should list the top 10 movies on the homepage.
 They should be displayed in a grid layout with their movie posters.
-The Card component should display the movie title and release date. 1. card - [data-testid: movie-card] 2. movie poster - [data-testid: movie-poster]
-movie title - [data-testid: movie-title]
-movie release date - [data-testid: movie-release-date]
+The Card component should display the movie title and release date.
+#1. card - [data-testid: movie-card]
+#2. movie poster - [data-testid: movie-poster]
+#3. movie title - [data-testid: movie-title]
+#4. movie release date - [data-testid: movie-release-date]
 
 ## Movie Search:
 

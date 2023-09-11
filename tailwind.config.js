@@ -6,6 +6,9 @@ export default {
             colors: {
                 bg: "#F4F5F7",
             },
+            backgroundImage: {
+                bgImg: "url('./src/assets/bg.jpeg')",
+            },
         },
     },
     plugins: [],
