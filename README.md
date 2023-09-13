@@ -30,7 +30,9 @@ title - [data-testid: movie-title]
 release date (in UTC) - [data-testid: movie-release-date]
 runtime (in minutes) - [data-testid: movie-runtime]
 overview - [data-testid: movie-overview]
-API Integration:
+
+## API Integration:
+
 Consume the TMDB API to fetch movie data.
 Use the following API endpoints:
 Fetch movie details by ID: https://api.themoviedb.org/3/movie/{movie_id}
