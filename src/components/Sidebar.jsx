@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import tv from "../assets/tv.png";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
@@ -9,22 +9,24 @@ import { TbLogout } from "react-icons/tb";
 const Sidebar = ({ openSideBar }) => {
     const navLinks = [
         {
-            link: "Home",
+            title: "Home",
+            link: "/",
             icon: <AiOutlineHome />,
             active: false,
         },
         {
-            link: "Movies",
+            title: "Movies",
+            link: "/movies/:movieId",
             icon: <BiCameraMovie />,
             active: true,
         },
         {
-            link: "TV Series",
+            title: "TV Series",
             icon: <PiVideoBold />,
             active: false,
         },
         {
-            link: "Upcoming",
+            title: "Upcoming",
             icon: <LiaCalendar />,
             active: false,
         },
@@ -43,10 +45,11 @@ const Sidebar = ({ openSideBar }) => {
                 </Link>
             </div>
             <nav className="flex flex-col w-full mb-5">
-                {navLinks.map(({ icon, link, active }) => {
+                {navLinks.map(({ icon, title, link, active }) => {
                     return (
-                        <NavLink
-                            key={link}
+                        <Link
+                            key={title}
+                            to={link}
                             className={`flex items-center gap-2 py-5 px-6 text-gray-600 text-base hover:border-r-4 hover:border-rose-700 hover:bg-rose-100 duration-300 ${
                                 active &&
                                 "border-r-4 border-rose-700 bg-rose-100"
@@ -58,9 +61,9 @@ const Sidebar = ({ openSideBar }) => {
                                     active && "text-rose-700"
                                 } font-bold`}
                             >
-                                {link}
+                                {title}
                             </span>
-                        </NavLink>
+                        </Link>
                     );
                 })}
             </nav>

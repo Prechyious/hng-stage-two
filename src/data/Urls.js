@@ -6,7 +6,7 @@ export const searchMovieUrl =
     "https://api.themoviedb.org/3/search/movie?query=";
 export const searchMovieById = "https://api.themoviedb.org/3/movie/";
 
-export const imgUrl = "https://image.tmdb.org/t/p/original";
+export const imgUrl = "https://image.tmdb.org/t/p/";
 
 const genres = [
     {

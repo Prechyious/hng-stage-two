@@ -1,20 +1,31 @@
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
-import { FaEquals } from "react-icons/fa";
+import { FaEquals, FaList, FaPlay, FaStar, FaTicketAlt } from "react-icons/fa";
+import { BsDot } from "react-icons/bs";
 import Sidebar from "../components/Sidebar";
-import { API_KEY, searchMovieUrl } from "../data/Urls";
+import { API_KEY, imgUrl } from "../data/Urls";
 import { ScaleLoader } from "react-spinners";
+import moreOptions from "../assets/more.png";
 
 const Details = () => {
-    const [openSideBar, setOpenSideBar] = useState(false);
+    const [openSideBar, setOpenSideBar] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const [movie, setMovie] = useState([]);
     console.log(movie);
 
     const { movieId } = useParams();
 
-    const { backdrop_path, title, release_date, runtime, overview } = movie;
+    const {
+        backdrop_path,
+        title,
+        release_date,
+        runtime,
+        overview,
+        vote_average,
+    } = movie;
+
+    const releaseYear = release_date;
 
     const fetchMovie = async () => {
         setIsLoading(true);
@@ -56,21 +67,55 @@ const Details = () => {
             </div>
             <Sidebar openSideBar={openSideBar} />
 
-            <section className="mt-7 mx-20">
-                <div>
+            <section className="mt-7 mx-10">
+                <div className="relative">
                     <img
-                        src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+                        src={`${imgUrl}/original/${backdrop_path}`}
                         alt={title}
                         className="rounded-2xl w-full h-[20rem] md:h-[28rem]"
                     />
+                    <button className="absolute top-28 left-52 md:top-[10rem] md:left-[26rem] flex flex-col items-center gap-2 text-white">
+                        <div className="bg-white/20 p-4 rounded-full">
+                            <FaPlay className=" opacity-75" size={25} />
+                        </div>
+                        <span className="text-xl md:text-2xl text-[#E8E8E8]">
+                            Watch Trailer
+                        </span>
+                    </button>
                 </div>
-                <div className=" text-2xl font-medium text-[#404040] flex gap-4 my-6">
-                    <h2 data-testid="movie-title">{title}</h2>
-                    <p data-testid="movie-release-date">{release_date}</p>
-                    <p data-testid="movie-runtime">{runtime}</p>
+                <div className="text-base md:text-xl font-medium text-[#404040] flex items-center justify-between my-5">
+                    <div className="flex items-center gap-1 md:gap-2 text-xl md:text-2xl">
+                        <h2 data-testid="movie-title">{title}</h2>
+                        <BsDot size={30} />
+                        <p data-testid="movie-release-date">{releaseYear}</p>
+                        <BsDot size={30} />
+                        <p data-testid="movie-runtime">{runtime}</p>
+                    </div>
+                    <p className="flex items-center">
+                        <FaStar className="text-yellow-400" />
+                        <span className="text-[#E8E8E8] mx-1">
+                            {vote_average}
+                        </span>
+                        | 250K
+                    </p>
                 </div>
-                <div className=" text-xl text-[#333] w-3/4">
-                    <p data-testid="movie-overview">{overview}</p>
+                <div className="flex flex-col gap-3 md:flex-row text-base md:text-xl font-normal text-[#333] justify-between">
+                    <p data-testid="movie-overview" className=" max-w-xl">
+                        {overview}
+                    </p>
+                    <div className="flex flex-col gap-2 font-medium">
+                        <button className="bg-rose-700 px-6 py-2 rounded-lg text-white flex items-center gap-3">
+                            <FaTicketAlt className=" -rotate-45" />
+                            See Showtime
+                        </button>
+                        <button className="bg-rose-100 px-6 py-2 rounded-lg text-[#333] border border-rose-700 flex items-center gap-3">
+                            <FaList />
+                            More watch options
+                        </button>
+                        <div className="mt-4">
+                            <img src={moreOptions} alt="watch more" />
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

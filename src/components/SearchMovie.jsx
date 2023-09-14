@@ -1,40 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { API_KEY, searchMovieUrl } from "../data/Urls";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 const SearchMovie = () => {
-    const [movie, setMovie] = useState([]);
     const [value, setValue] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const { movieName } = useParams();
-    // console.log(movie);
     const navigate = useNavigate();
-
-    const searchMovie = async (e) => {
-        try {
-            setIsLoading(true);
-            const res = await fetch(`${searchMovieUrl}${value}&${API_KEY}`);
-            const data = await res.json();
-            setMovie(data.results);
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
 
     const handleSearchMovie = (e) => {
         e.preventDefault();
-        searchMovie();
-        setMovie("");
+        navigate(`/movie/search/${value}`);
+        setValue("");
     };
-
-    useEffect(() => {
-        searchMovie();
-    }, []);
-    // console.log(movie);
     return (
         <div className="w-full md:w-2/4 border-2 border-white rounded-lg p-2 relative">
             <form

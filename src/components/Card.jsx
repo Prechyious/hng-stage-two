@@ -27,11 +27,11 @@ const Card = ({ poster_path, title, release_date, id, vote_average }) => {
             >
                 <FaHeart />
             </button>
-            <Link to={`/movie/${id}`}>
+            <Link to={`/movie/${id}`} className="w-[15.625rem]">
                 <img
-                    className="h-[23.125rem] w-[15.625rem] hover:scale-105 transition-all duration-700 ease-in-out mb-2"
+                    className="h-[21.125rem] w-full hover:scale-105 transition-all duration-700 ease-in-out mb-2"
                     data-testid="movie-poster"
-                    src={`${imgUrl}/${poster_path}`}
+                    src={`${imgUrl}/w500${poster_path}`}
                     alt={title}
                 />
                 <p className="text-xs font-semibold text-gray-400">
