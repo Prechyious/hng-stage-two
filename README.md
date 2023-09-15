@@ -4,6 +4,7 @@
 
 -   [Objective](#objective)
 -   [Solution](#solution)
+-   [Note](#note)
 -   [Link](#links)
 -   [Instructions](#instructions)
 
@@ -18,6 +19,10 @@ This is my solution to the stage two task.
 "/" Renders the homepage with a header, the featured movies section which fetches the top 10 rated movies in the db.
 navigating to movies/:movieId or clicking on any of the movies will take you movie detail page.
 Also search the name of the movie using the provided input box will redirect you to a page of a list of movies with that name.
+
+### Note
+
+Please note the sign in button and logout button in the side bar don't have any functionality
 
 ### Links
 
