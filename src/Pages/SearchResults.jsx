@@ -3,7 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { API_KEY, searchMovieUrl } from "../data/Urls";
 import { ScaleLoader } from "react-spinners";
 import Card from "../components/Card";
-import SearchMovie from "../components/SearchMovie";
+import SearchMovie from "../components/SearchInput";
+import { FaArrowLeft } from "react-icons/fa";
 
 const SearchResults = () => {
     const [movie, setMovie] = useState([]);
@@ -18,7 +19,7 @@ const SearchResults = () => {
             const data = await res.json();
             setMovie(data.results);
         } catch (error) {
-            setErrors(error.stack);
+            setErrors(error);
         } finally {
             setIsLoading(false);
         }
@@ -26,7 +27,7 @@ const SearchResults = () => {
 
     useEffect(() => {
         searchMovie();
-    }, []);
+    }, [movieName]);
 
     return (
         <>
@@ -37,29 +38,31 @@ const SearchResults = () => {
             ) : (
                 <main>
                     <section className="mb-2">
-                        <div className="border-b w-full py-2 px-10 mb-5 flex items-center justify-between gap-36">
-                            <Link className="font-bold text-lg" to="/">
-                                Home
+                        <div className="border-b w-full py-2 px-10 mb-5 flex flex-col md:flex-row gap-3 justify-between bg-rose-200">
+                            <Link
+                                className="font-bold text-lg text-gray-700 flex items-center gap-2"
+                                to="/"
+                            >
+                                <FaArrowLeft size={16} />
+                                <span>Go Back</span>
                             </Link>
 
                             <SearchMovie />
                         </div>
-                        <h2 className="px-10">
+                        <h2 className="px-10 text-xl md:text-2xl">
                             Search results for{" "}
-                            <span className="font-semibold">{movieName}</span>
+                            <span className="font-semibold text-gray-700">
+                                {movieName}
+                            </span>
                         </h2>
                     </section>
-                    <section
-                        className={`${
-                            errors
-                                ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 lg:grid-cols-4 2xl:grid-cols-5 place-items-center"
-                                : "text-center"
-                        }`}
-                    >
-                        {!errors ? (
-                            <p className="text-center font-bold text-xl text-gray-700">
-                                Oops... Something went wrong
-                            </p>
+                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 lg:grid-cols-4 2xl:grid-cols-5 place-items-center">
+                        {!movie.length ? (
+                            <h2 className="font-semibold text-xl md:text-2xl text-gray-700 text-center mx-0">
+                                Sorry,{" "}
+                                <span className="font-bold">{movieName}</span>{" "}
+                                not found
+                            </h2>
                         ) : (
                             movie.map(
                                 ({

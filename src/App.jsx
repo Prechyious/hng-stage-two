@@ -2,6 +2,7 @@ import Home from "./Pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Details from "./Pages/Details";
 import SearchResults from "./Pages/SearchResults";
+import ErrorPage from "./Pages/ErrorPage";
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
                     path="/movie/search/:movieName"
                     element={<SearchResults />}
                 />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
         </>
     );

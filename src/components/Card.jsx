@@ -12,6 +12,8 @@ const Card = ({ poster_path, title, release_date, id, vote_average }) => {
         setLiked(!liked);
     };
 
+    const utcDate = new Date(release_date).toUTCString();
+
     return (
         <div
             data-testid="movie-card"
@@ -27,20 +29,22 @@ const Card = ({ poster_path, title, release_date, id, vote_average }) => {
             >
                 <FaHeart />
             </button>
-            <Link to={`/movie/${id}`} className="w-[15.625rem]">
+            <Link to={`/movie/${id}`} className="max-h-[28rem] w-[15.625rem]">
                 <img
                     className="h-[21.125rem] w-full hover:scale-105 transition-all duration-700 ease-in-out mb-2"
                     data-testid="movie-poster"
                     src={`${imgUrl}/w500${poster_path}`}
                     alt={title}
                 />
-                <p className="text-xs font-semibold text-gray-400">
-                    Release date:{" "}
-                    <span data-testid="movie-release-date">{release_date}</span>
-                </p>
+                <h2
+                    className="text-xs font-semibold text-gray-400"
+                    data-testid="movie-release-date"
+                >
+                    {utcDate}
+                </h2>
                 <h2
                     data-testid="movie-title"
-                    className="font-bold text-gray-900 text-lg"
+                    className="font-bold text-gray-900 leading-6 text-lg"
                 >
                     {title}
                 </h2>
@@ -48,7 +52,7 @@ const Card = ({ poster_path, title, release_date, id, vote_average }) => {
                     <h4 className="flex gap-2 items-center">
                         <img src={imdbIcon} alt="imdb" />
                         <p className="text-gray-900 text-xs">
-                            {vote_average * 10}.0 / 100
+                            {Math.floor(vote_average * 10)}.0 / 100
                         </p>
                     </h4>
                     <h4 className="flex gap-1 items-center">
