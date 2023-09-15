@@ -2,6 +2,7 @@ import Card from "./Card";
 import { ScaleLoader } from "react-spinners";
 
 const FeaturedMovies = ({ movies, errors, isLoading }) => {
+    console.log(errors);
     return (
         <main className="px-10 md:px-20 mb-36">
             <div className="flex justify-between mb-11 items-center">
@@ -18,15 +19,18 @@ const FeaturedMovies = ({ movies, errors, isLoading }) => {
             ) : (
                 <section
                     className={`${
-                        errors
+                        !errors.length
                             ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-10 place-items-center"
-                            : "text-center"
+                            : "grid"
                     }`}
                 >
-                    {!errors ? (
-                        <p className="text-center font-bold text-xl text-gray-700">
-                            Oops... Something went wrong
-                        </p>
+                    {errors.length ? (
+                        <div>
+                            <p className="text-center font-bold text-xl text-gray-700 w-full">
+                                Oops... Something went wrong, unable to fetch
+                                data
+                            </p>
+                        </div>
                     ) : (
                         movies.map(
                             ({
