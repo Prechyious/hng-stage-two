@@ -29,7 +29,7 @@ const Home = () => {
     }, []);
     return (
         <>
-            <Header />
+            <Header movies={movies} />
             <FeaturedMovies
                 movies={movies}
                 isLoading={isLoading}

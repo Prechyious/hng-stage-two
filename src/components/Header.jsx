@@ -4,11 +4,15 @@ import imdb from "../assets/imdb.png";
 import tomato from "../assets/tomato.png";
 import tv from "../assets/tv.png";
 import SearchMovie from "./SearchInput";
+import bg from "../assets/bg.jpeg";
 
 const Header = () => {
     return (
         <header>
-            <div className="relative h-screen w-full bg-center bg-no-repeat bg-cover px-5 md:px-20 text-white mb-16 bg-bgImg before:absolute before:h-screen before:bg-black/50 before:inset-0">
+            <div
+                className="relative h-screen w-full bg-center bg-no-repeat bg-cover px-5 md:px-20 text-white mb-16 before:absolute before:h-screen before:bg-black/50 before:inset-0"
+                style={{ backgroundImage: `url(${bg})` }}
+            >
                 <div className="absolute w-[90dvw] flex flex-col md:flex-row gap-5 items-start md:items-center justify-between py-4 md:gap-20 z-10">
                     <div>
                         <Link
