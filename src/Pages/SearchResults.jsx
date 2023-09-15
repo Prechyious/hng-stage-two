@@ -38,7 +38,7 @@ const SearchResults = () => {
             ) : (
                 <main>
                     <section className="mb-2">
-                        <div className="border-b w-full py-2 px-10 mb-5 flex flex-col md:flex-row gap-3 justify-between bg-rose-200">
+                        <div className="border-b w-full py-2 px-10 mb-5 flex flex-col md:flex-row gap-3 justify-between">
                             <Link
                                 className="font-bold text-lg text-gray-700 flex items-center gap-2"
                                 to="/"

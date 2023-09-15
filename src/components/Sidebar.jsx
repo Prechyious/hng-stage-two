@@ -42,8 +42,9 @@ const Sidebar = () => {
 
     return (
         <>
-            <aside className="hidden md:block border rounded-r-[2.8rem] fixed md:relative h-screen z-10 bg-white shadow-md transition-all duration-300 ease-in-out">
-                <div className="mb-7 pt-10 px-4">
+            {/* Desktop Side bar */}
+            <aside className="hidden lg:flex lg:flex-col gap-2 border rounded-r-[2.8rem] sticky z-10 top-0 left-0 h-screen bg-white shadow-md">
+                <div className="pt-10 px-4">
                     <Link
                         className="flex items-center gap-2 md:gap-5 text-xl font-bold"
                         to="/"
@@ -52,7 +53,7 @@ const Sidebar = () => {
                         MovieBox
                     </Link>
                 </div>
-                <nav className="flex flex-col w-full mb-5">
+                <nav className="flex flex-col w-full xl:mb-5">
                     {navLinks.map(({ icon, title, link, active }) => {
                         return (
                             <Link
@@ -75,7 +76,7 @@ const Sidebar = () => {
                         );
                     })}
                 </nav>
-                <div className="bg-rose-50 border border-rose-400 rounded-[1.25rem] p-2 w-40 h-48 mx-6 mb-10">
+                <div className="bg-rose-50 border border-rose-400 rounded-[1.25rem] p-2 w-40 h-48 mx-6 xl:mb-7">
                     <p className=" mt-8 mb-2 text-sm font-semibold text-gray-700 px-2">
                         Play movie quizes and earn <br /> free tickets
                     </p>
@@ -95,7 +96,7 @@ const Sidebar = () => {
 
             {/* Sidebar for mobile devices */}
             <aside
-                className={`block md:hidden border rounded-r-[2.8rem] fixed md:relative h-screen z-10 bg-white shadow-md transition-all duration-300 ease-in-out md:left-0 ${
+                className={`block lg:hidden border rounded-r-[2.8rem] fixed lg:relative h-screen z-10 bg-white shadow-md transition-all duration-300 ease-in-out lg:left-0 ${
                     openSideBar
                         ? "left-0 opacity-100"
                         : "left-[-100%] opacity-0"
@@ -152,7 +153,7 @@ const Sidebar = () => {
             </aside>
             <button
                 onClick={openMenu}
-                className={`fixed md:hidden z-[9] cursor-pointer duration-300 ease-in-out ${
+                className={`fixed lg:hidden z-[9] cursor-pointer duration-300 ease-in-out ${
                     openSideBar ? "left-[13rem]" : "left-1"
                 } top-12`}
             >

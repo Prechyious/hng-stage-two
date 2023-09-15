@@ -26,7 +26,10 @@ const SearchInput = () => {
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                 />
-                <button className="absolute right-2 text-white" type="submit">
+                <button
+                    className="absolute right-2 text-gray-300"
+                    type="submit"
+                >
                     <FaSearch />
                 </button>
             </form>

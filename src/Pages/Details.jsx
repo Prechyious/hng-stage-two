@@ -39,7 +39,7 @@ const Details = () => {
 
     useEffect(() => {
         fetchMovie();
-    }, []);
+    }, [backdrop_path]);
 
     if (isLoading) {
         return (
