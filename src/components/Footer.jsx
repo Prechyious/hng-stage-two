@@ -24,13 +24,13 @@ const Footer = () => {
                 </Link>
             </div>
 
-            <div className="flex items-center gap-12">
+            <div className="flex items-center flex-col md:flex-row gap-2 md:gap-12 text-sm ">
                 <Link>Conditions of Use</Link>
                 <Link>Privacy & Policy</Link>
                 <Link>Press Room</Link>
             </div>
 
-            <div className="text-gray-500">
+            <div className="text-gray-500 text-sm sm:text-base">
                 <p>&copy; 2023 MovieBox by Leghemo Precious</p>
             </div>
         </footer>
