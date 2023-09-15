@@ -7,7 +7,6 @@ import { topRated } from "../data/Urls";
 const Home = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    // console.log(movies);
 
     const [errors, setErrors] = useState([]);
 
