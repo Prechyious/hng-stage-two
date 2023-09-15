@@ -46,16 +46,16 @@ const MovieDetails = ({
                     250K
                 </p>
             </div>
-            <div className="flex flex-col md:flex-row text-lg md:text-xl font-normal text-[#333]">
-                <div className="mb-4 md:mb-0 leading-6">
+            <div className="flex flex-col gap-4 md:flex-row text-lg md:text-xl font-normal text-[#333]">
+                <div className="mb-3 md:mb-0 leading-6">
                     <p
                         data-testid="movie-overview"
-                        className="md:max-w-[47rem]"
+                        className="md:max-w-[46rem]"
                     >
                         {overview}
                     </p>
 
-                    <div className="mt-6 mb-3">
+                    <div className="mt-5 mb-3">
                         <h3 className="mb-3">
                             Director:{" "}
                             <span className="text-rose-700">John Doe</span>

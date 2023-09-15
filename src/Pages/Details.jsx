@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { API_KEY } from "../data/Urls";
+import { API_KEY, searchMovieById } from "../data/Urls";
 import { ScaleLoader } from "react-spinners";
 import MovieDetails from "../components/MovieDetails";
 
@@ -26,9 +26,7 @@ const Details = () => {
     const fetchMovie = async () => {
         setIsLoading(true);
         try {
-            const res = await fetch(
-                `https://api.themoviedb.org/3/movie/${movieId}?${API_KEY}`
-            );
+            const res = await fetch(`${searchMovieById}/${movieId}?${API_KEY}`);
             const data = await res.json();
             setMovie(data);
         } catch (error) {
@@ -55,7 +53,7 @@ const Details = () => {
         <div className="bg-white h-screen flex gap-5">
             <Sidebar />
 
-            {errors.length ? (
+            {errors.length || movie.success === false ? (
                 <div className="grid h-screen w-full place-items-center">
                     <p className="font-bold text-2xl text-gray-600">
                         Oops.. Something went wrong, unable to fetch data
